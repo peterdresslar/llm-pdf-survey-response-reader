@@ -168,9 +168,12 @@ def process_pdf(pdf_path, client, output_file, survey_length):
         
         logger.info(f"Successfully processed survey {i // survey_length + 1}")
     
-    # Write data to CSV
-    with open(output_file, 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
+    # Ensure the output directory exists
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    
+    # Write data to CSV with proper quoting
+    with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
         writer.writerow(['response_id'] + question_structure)
         writer.writerows(all_data)
         logger.info(f"Data written to {output_file}")
@@ -188,7 +191,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Process a PDF survey and convert it to structured data.")
     parser.add_argument("pdf_path", help="Path to the PDF file to be processed")
-    parser.add_argument("--output", default="processed_survey_data.csv", help="Output CSV file name (default: processed_survey_data.csv)")
+    parser.add_argument("--output", default="data/processed_survey_data.csv", help="Output CSV file name (default: processed_survey_data.csv)")
     parser.add_argument("--survey-length", type=int, required=True, help="Number of pages per survey")
     args = parser.parse_args()
 
