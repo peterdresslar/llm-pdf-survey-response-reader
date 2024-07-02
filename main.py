@@ -75,6 +75,8 @@ For multiple choice or checkbox questions:
 - Use 'question_number_optionnumber' as the key
 - Set 'question' to the text of the option
 - Set 'answer' to true if selected, false if not selected
+- For multiple choice questions with "other" options, use the same approach to set the question_number_optionnumber and question.
+- For multiple choice questions with "other" options, set ʻanswerʼ to the text written by the pollee. If other is checked but no text is written, set ʻanswerʼ to ʻother-no-textʼ.
 
 For open-ended questions:
 - Use 'question_number' as the key (no subquestion)
