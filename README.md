@@ -1,4 +1,5 @@
-# PDF Survey Processor
+# llm-pdf-survey-response-reader
+
 ## Overview
 This project is a Python-based tool designed to process PDF surveys and convert them into structured data. It uses computer vision and natural language processing techniques to extract information from scanned survey forms and output the results in a CSV format.
 ## Features
